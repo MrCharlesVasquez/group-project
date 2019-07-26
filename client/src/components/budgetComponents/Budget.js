@@ -1,26 +1,31 @@
-import React from 'react'
-import TransactionList from './TransactionsList.js'
+import React, { useEffect } from 'react'
+import TransactionsList from './TransactionsList.js'
 import TransactionForm from './TransactionForm.js'
+import { withVice } from '../../context/ViceProvider.js'
 
 
 
 
-const Budget = () => {
-    const transaction = [
-        {name:'', amount:0, description:'', date:''},
-        {name:'', amount:0, description:'', date:''},
-        {name:'', amount:0, description:'', date:''},
-        {name:'', amount:0, description:'', date:''},
-        {name:'', amount:0, description:'', date:''},
-        {name:'', amount:0, description:'', date:''},
-        {name:'', amount:0, description:'', date:''},
-    ]
+
+const Budget = props => {
+
+    useEffect(() => {
+        // Component Did Mount
+        props.getTransactions()
+    }, [props.getTransactions] )
+    
+
+
+    
+    
+    console.log(props)
     return (
-        <div>
-            <TransactionForm/>
-            <TransactionList/>
-        </div>
-    )
+            <div>
+                {/* <TransactionForm/> */}
+                <TransactionsList transactions={props.transactions}/>
+                Hello World
+            </div>
+        )
 }
 
-export default Budget
+export default withVice(Budget)
