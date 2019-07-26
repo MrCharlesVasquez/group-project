@@ -1,38 +1,39 @@
 import React from 'react'
 
 const TransactionForm = props => {
+    const { transName, transAmount, transDate, transSubmit, transChange } = props
 
     return(
-        {/* <form onSubmit={""}>
+        <form onSubmit={transSubmit}>
             <input 
                 type="text" 
                 name="transName" 
-                value={""} 
-                onChange={""} 
+                value={transName} 
+                onChange={transChange} 
                 placeholder="memo"/>
             <input 
                 type="number" 
                 name="transAmount" 
-                value={""} 
-                onChange={""} 
+                value={transAmount} 
+                onChange={transChange} 
                 placeholder="amount"/>
             <input 
                 type="radio" 
                 name="transType" 
                 value="expense" 
-                onChange={""}/>
+                onChange={transChange}/>
             <input 
                 type="radio" 
                 name="transType" 
                 value="income" 
-                onChange={""}/>
+                onChange={transChange}/>
             <input 
                 type="date" 
                 name="transDate" 
-                value={""} 
-                onChange={""} />
+                value={transDate} 
+                onChange={transChange} />
             <button>Submit</button>
-        </form> */}
+        </form>
     )
 }
 

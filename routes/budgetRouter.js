@@ -27,6 +27,7 @@ budgetRouter.get("/:_id", (req, res, next) => {
 
 // * Post 
 budgetRouter.post("/", (req, res, next) => {
+    console.log(req.body)
     const newTransaction = new Transaction(req.body)
     newTransaction.save((err, savedTransaction) => {
         if(err){
