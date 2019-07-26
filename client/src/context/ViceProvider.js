@@ -4,9 +4,13 @@ import axios from 'axios'
 const ViceContext = React.createContext()
 
 class ViceProvider extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
+            goalName: "",
+            goalDescription: "",
+            goalPrice: 0,
+            goalArray: [],
             transactions: []
         }
     }
@@ -23,15 +27,49 @@ class ViceProvider extends Component {
     }
 
 
-    render(){
-        return(
+    /////////  Goal Form handleChange & handleSubmit ////////////
+    goalChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    goalSubmit = e => {
+        e.preventDefault()
+        const newGoal = {
+            goalName: this.state.goalName,
+            goalDescription: this.state.goalDescription,
+            goalPrice: this.state.goalPrice
+        }
+        this.setState(prevState => ({
+            goalName: "",
+            goalDescription: "",
+            goalPrice: 0,
+            goalArray: [...prevState.goalArray, newGoal ]
+
+        }))
+    }
+
+
+    render() {
+        return (
             <ViceContext.Provider
-                value ={{
+                value={{
+                    goalName: this.state.goalName,
+                    goalDescription: this.state.goalDescription,
+                    goalPrice: this.state.goalPrice,
+                    goalChange: this.goalChange,
+                    goalSubmit: this.goalSubmit,
+                    goalArray: this.state.goalArray,
+
+                    transactions: this.state.transactions,
+                    
                     getTransactions: this.getTransactions,
-                    transactions: this.state.transactions
+
+
                 }}
             >
-            { this.props.children }
+                {this.props.children}
             </ViceContext.Provider>
         )
     }
@@ -41,6 +79,6 @@ export default ViceProvider
 
 export const withVice = C => props => (
     <ViceContext.Consumer>
-        { value => <C {...value} {...props}/> }
+        {value => <C {...value} {...props} />}
     </ViceContext.Consumer>
 )

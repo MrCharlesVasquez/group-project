@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import GoalForm from './GoalForm.js';
+import { withVice } from '../../context/ViceProvider.js'
 
 
 
-class Profile extends Component {
-    constructor() {
-        super()
-        this.state = {}
 
-    }
+const Profile = (props) => {
 
-    render() {
-        return (
-            <div>
+
+
+    return (
+        <div>
+            <GoalForm
+                {...props} />
             
-
-                <h1>Profile</h1>
-
-            </div>
-        )
-    }
-
+        </div>
+    )
 }
 
-export default Profile
+
+
+export default withVice(Profile)
