@@ -11,10 +11,17 @@ class ViceProvider extends Component {
             goalDescription: "",
             goalPrice: 0,
             goalArray: [],
-            transactions: []
+
+            transactions: [],
+            transName: "",
+            transAmount: "",
+            transType: "",
+            transDate: "",
+            transArray: [],
         }
     }
 
+// * Axios requests
     getTransactions = () => {
         axios.get("/transactions")
             .then(res => {
@@ -26,8 +33,18 @@ class ViceProvider extends Component {
             .catch(err => console.log(err))
     }
 
+    addNewTransaction = newTrans => {
+        axios.post("/transactions", newTrans)
+            .then(res => {
+                this.setState(prevState => ({
+                    transactions: [prevState.transactions, newTrans]
+                }))
+            })
+            .catch(err => console.log(err))
+    }   
 
-    /////////  Goal Form handleChange & handleSubmit ////////////
+
+// *  Goal Form handleChange & handleSubmit ////////////
     goalChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -49,7 +66,35 @@ class ViceProvider extends Component {
 
         }))
     }
+    
+// * Transaction Form handleChange and handleSubmit
+    transChange = (e) => {
+        const { name, value } = e.target
+// ? are radio buttons special like checkboxes? or do they just use "value" like regular inputs?
+        this.setState({
+            [name]: value
+        })
+    }
 
+    transSubmit = (e) => {
+        e.preventDefault()
+        const newTrans = {
+            transName: this.state.transName,
+            transAmount: this.state.transAmount,
+            transType: this.state.transType,
+            transDate: this.state.transDate
+        }
+        
+        this.setState(prevState => ({
+            transName: "",
+            transAmount: "",
+            transType: "",
+            transDate: "",
+            transactions: [prevState.transArray, newTrans]
+        }))
+        console.log(newTrans)
+        this.addNewTransaction(newTrans)
+    }
 
     render() {
         return (
@@ -62,9 +107,17 @@ class ViceProvider extends Component {
                     goalSubmit: this.goalSubmit,
                     goalArray: this.state.goalArray,
 
+                    transName: this.state.transName,
+                    transAmount: this.state.transAmount,
+                    transType: this.state.transType,
+                    transDate: this.state.transDate,
+
                     transactions: this.state.transactions,
                     
                     getTransactions: this.getTransactions,
+                    transChange: this.transChange,
+                    transSubmit: this.transSubmit,
+
 
 
                 }}
