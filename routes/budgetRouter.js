@@ -14,7 +14,7 @@ budgetRouter.get("/", (req, res, next) => {
     })
 })
 
-// * Get 1 Transaction
+// * Get One Transaction
 budgetRouter.get("/:_id", (req, res, next) => {
     Transaction.findOne({ _id: req.params._id }, (err, foundTransaction) => {
         if(err){
@@ -47,7 +47,7 @@ budgetRouter.delete("/:_id", (req, res, next) => {
         res.status(202).send(
             {
                 transaction: deletedTransaction,
-                msg: `Successfully deleted ${deletedTransaction.name}`
+                msg: `Successfully deleted ${deletedTransaction.name}.`
             }
         )
     })
