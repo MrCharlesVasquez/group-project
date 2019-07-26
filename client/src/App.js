@@ -4,10 +4,11 @@ import NavBar from './NavBar.js'
 import Profile from './components/profileComponents/Profile.js';
 import Budget from './components/budgetComponents/Budget.js';
 import Home from './components/homeComponents/Home.js';
+import { withVice } from './context/ViceProvider.js'
 
 
 
-const App = () =>{
+const App = (props) =>{
     return(
         <div>
            
@@ -24,4 +25,4 @@ const App = () =>{
     )
 }
 
-export default App
+export default withVice(App)
