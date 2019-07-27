@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const goalSchema = new Schema({
-    name: {
+    goalName: {
         type: String,
         required: true
     },
-    description: String,
-    price: {
+    goalDescription: String,
+    goalPrice: {
         type: Number,
         required: true
     }
