@@ -10,6 +10,7 @@ class ViceProvider extends Component {
             goalName: "",
             goalDescription: "",
             goalPrice: 0,
+            goalDate: "",
             goalArray: [],
 
             transactions: [],
@@ -42,6 +43,28 @@ class ViceProvider extends Component {
             })
             .catch(err => console.log(err))
     }   
+//*    Axois Request for Goals
+
+getGoals = () => {
+    axios.get("/goals")
+        .then(res => {
+            console.log(res)
+            this.setState({
+                goals: res.data
+            })
+        })
+        .catch(err => console.log(err))
+}
+
+addNewGoal = newTrans => {
+    axios.post("/goals", newTrans)
+        .then(res => {
+            this.setState(prevState => ({
+                goals: [prevState.transactions, newTrans]
+            }))
+        })
+        .catch(err => console.log(err))
+}   
 
 
 // *  Goal Form handleChange & handleSubmit ////////////
@@ -56,12 +79,14 @@ class ViceProvider extends Component {
         const newGoal = {
             goalName: this.state.goalName,
             goalDescription: this.state.goalDescription,
-            goalPrice: this.state.goalPrice
+            goalPrice: this.state.goalPrice,
+            goalDate: this.state.goalDate
         }
         this.setState(prevState => ({
             goalName: "",
             goalDescription: "",
             goalPrice: 0,
+            goalDate: "",
             goalArray: [...prevState.goalArray, newGoal ]
 
         }))
@@ -105,6 +130,7 @@ class ViceProvider extends Component {
                     goalPrice: this.state.goalPrice,
                     goalChange: this.goalChange,
                     goalSubmit: this.goalSubmit,
+                    goalDate: this.goalDate,
                     goalArray: this.state.goalArray,
 
                     transName: this.state.transName,

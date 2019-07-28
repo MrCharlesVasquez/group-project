@@ -10,6 +10,9 @@ const goalSchema = new Schema({
     goalPrice: {
         type: Number,
         required: true
+    },
+    goalDate: {
+        type: Date,
     }
 })
 
