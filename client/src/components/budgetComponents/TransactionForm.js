@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TransactionForm = props => {
-    const { transName, transAmount, transDate, transSubmit, transChange } = props
+    const { transName, transAmount, transDate, transSubmit, transChange,  } = props
 
     return(
         <form onSubmit={transSubmit}>
