@@ -66,7 +66,6 @@ class ViceProvider extends Component {
     getGoals = () => {
         axios.get("/goals")
             .then(res => {
-                console.log(res)
                 this.setState({
                     goalArray: res.data
                 })
@@ -122,16 +121,18 @@ class ViceProvider extends Component {
         this.getGoals()
     }
 
-    // getMainGoal = e => {
-
-    //     let mainGoal = Math.max(Object.values (this.state.goalArray.goalPrice))
-    //     this.setState({
-    //         mainGoal:mainGoal
-    //     })
-
+    getMainGoal = e => {
+        const { goalArray } = this.state
         
-        
-    // }
+        goalArray.sort((a, b) => (b.goalPrice - a.goalPrice))
+        console.log(goalArray[0])
+        // let main = goalArray[0]
+   
+   
+    }
+
+
+    
 
     // * Transaction Form handleChange and handleSubmit
     transChange = (e) => {
