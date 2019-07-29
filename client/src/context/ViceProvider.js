@@ -12,7 +12,7 @@ class ViceProvider extends Component {
             goalPrice: 0,
             goalDate: "",
             goalArray: [],
-            mainGoal:"",
+            mainGoal:{},
 
             transactions: [],
             transName: "",
@@ -66,8 +66,11 @@ class ViceProvider extends Component {
     getGoals = () => {
         axios.get("/goals")
             .then(res => {
+               const goalArray = res.data.sort((a, b) => (b.goalPrice - a.goalPrice))
+               console.log(goalArray[0])
                 this.setState({
-                    goalArray: res.data
+                    goalArray,
+                    mainGoal: goalArray[0]
                 })
             })
             .catch(err => console.log(err))
@@ -121,15 +124,16 @@ class ViceProvider extends Component {
         this.getGoals()
     }
 
-    getMainGoal = e => {
-        const { goalArray } = this.state
+    // getMainGoal = e => {
+    //     const { goalArray } = this.state
         
-        goalArray.sort((a, b) => (b.goalPrice - a.goalPrice))
-        console.log(goalArray[0])
-        // let main = goalArray[0]
+    //     goalArray.sort((a, b) => (b.goalPrice - a.goalPrice))
+    //     console.log(goalArray[0])
+
+    // //    this.setState({mainGoal: goalArray[0]})
    
    
-    }
+    // }
 
 
     
