@@ -61,7 +61,6 @@ class ViceProvider extends Component {
     //         .then(res => console.log(res))
     //         .catch(err => console.log(err))
     // }
-
     // *    Axios Request for Goals
     getGoals = () => {
         axios.get("/goals")
