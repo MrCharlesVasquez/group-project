@@ -4,12 +4,12 @@ const Schema = mongoose.Schema
 const goalSchema = new Schema({
     goalName: {
         type: String,
-        required: true
+        // required: true
     },
     goalDescription: String,
     goalPrice: {
         type: Number,
-        required: true
+        // required: true
     },
     goalDate: {
         type: Date,

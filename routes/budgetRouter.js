@@ -48,7 +48,7 @@ budgetRouter.delete("/:_id", (req, res, next) => {
         res.status(202).send(
             {
                 transaction: deletedTransaction,
-                msg: `Successfully deleted ${deletedTransaction.name}.`
+                msg: `Successfully deleted ${deletedTransaction.transName}.`
             }
         )
     })
