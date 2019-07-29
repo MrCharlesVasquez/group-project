@@ -12,6 +12,7 @@ class ViceProvider extends Component {
             goalPrice: 0,
             goalDate: "",
             goalArray: [],
+            mainGoal:"",
 
             transactions: [],
             transName: "",
@@ -121,6 +122,17 @@ class ViceProvider extends Component {
         this.getGoals()
     }
 
+    // getMainGoal = e => {
+
+    //     let mainGoal = Math.max(Object.values (this.state.goalArray.goalPrice))
+    //     this.setState({
+    //         mainGoal:mainGoal
+    //     })
+
+        
+        
+    // }
+
     // * Transaction Form handleChange and handleSubmit
     transChange = (e) => {
         const { name, value } = e.target
@@ -169,11 +181,13 @@ class ViceProvider extends Component {
                     goalPrice: this.state.goalPrice,
                     goalDate: this.goalDate,
                     goalArray: this.state.goalArray,
+                    mainGoal: this.state.mainGoal,
 
                     getGoals: this.getGoals,
                     goalChange: this.goalChange,
                     goalSubmit: this.goalSubmit,
                     deleteGoal: this.deleteGoal,
+                    getMainGoal: this.getMainGoal,
 
                     transactions: this.state.transactions,
                     transName: this.state.transName,
