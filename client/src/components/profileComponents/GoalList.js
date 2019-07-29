@@ -3,15 +3,13 @@ import Goal from './Goal.js';
 
 
 const GoalList = props => {
-    const { goals } = props
-    console.log(props)
+    const { goalArray } = props
 
-    const mappedGoals = goals.map(goal => <Goal key={goal._id} {...goal} />)
+    const mappedGoals = goalArray.map((goal, i) => <Goal key={(goal._id ? goal._id : i)} {...goal} />)
 
     return (
         <div>
-            {mappedGoals}
-
+            { mappedGoals} 
         </div>
     )
 }

@@ -1,5 +1,5 @@
-import React/*, { useEffect } */ from 'react';
-import GoalList from './Goal.js'
+import React, { useEffect } from 'react';
+import GoalList from './GoalList.js'
 import GoalForm from './GoalForm.js';
 import { withVice } from '../../context/ViceProvider.js'
 
@@ -7,19 +7,19 @@ import { withVice } from '../../context/ViceProvider.js'
 
 
 const Profile = (props) => {
+    const { getGoals } = props
 
-    // useEffect(() => {
-    //     // Component Did Mount
-    //     props.getGoals()
-    // }, [props.getGoals])
+    useEffect(() => {
+        // Component Did Mount
+        getGoals()
+    }, [getGoals])
 
-    console.log(props.goals)
 
     return (
         <div>
             <GoalForm
                 {...props} />
-            <GoalList goals={props.goals} />
+            <GoalList {...props} />
 
         </div>
     )

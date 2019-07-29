@@ -18,11 +18,10 @@ class ViceProvider extends Component {
             transAmount: "",
             transType: "",
             transDate: "",
-            transArray: [],
         }
     }
 
-// * Axios requests
+    // * Axios requests
     getTransactions = () => {
         axios.get("/transactions")
             .then(res => {
@@ -42,36 +41,53 @@ class ViceProvider extends Component {
                 }))
             })
             .catch(err => console.log(err))
-    }   
-//*    Axois Request for Goals
+    }
 
-getGoals = () => {
-    axios.get("/goals")
-        .then(res => {
-            console.log(res)
-            this.setState({
-                goals: res.data
+    deleteTransaction = transID => {
+        axios.delete(`/transactions/${transID}`)
+            .then(res => {
+                alert(res.data.msg)
+                this.getTransactions()
+                }
+            )
+            .catch(err => console.log(err))
+    }
+
+    updateTransaction = transID => {
+        axios.put(`/transactions/${transID}`)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+    
+    // *    Axios Request for Goals
+    getGoals = () => {
+        axios.get("/goals")
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    goalArray: res.data
+                })
             })
-        })
-        .catch(err => console.log(err))
-}
+            .catch(err => console.log(err))
+    }
 
-addNewGoal = newTrans => {
-    axios.post("/goals", newTrans)
-        .then(res => {
-            this.setState(prevState => ({
-                goals: [prevState.transactions, newTrans]
-            }))
-        })
-        .catch(err => console.log(err))
-}   
+    addNewGoal = newGoal => {
+        axios.post("/goals", newGoal)
+            .then(res => {
+                this.setState(prevState => ({
+                    goalArray: [prevState.goalArray, newGoal]
+                }))
+            })
+            .catch(err => console.log(err))
+    }
 
 
-// *  Goal Form handleChange & handleSubmit ////////////
+    // *  Goal Form handleChange & handleSubmit ////////////
     goalChange = e => {
+        const { name, value } = e.target
         this.setState({
-            [e.target.name]: e.target.value
-        })
+            [name]: value
+        }, () => console.log(name))
     }
 
     goalSubmit = e => {
@@ -87,15 +103,15 @@ addNewGoal = newTrans => {
             goalDescription: "",
             goalPrice: 0,
             goalDate: "",
-            goalArray: [...prevState.goalArray, newGoal ]
-
+            goalArray: [...prevState.goalArray, newGoal]
         }))
+        this.addNewGoal()
+        this.getGoals()
     }
-    
-// * Transaction Form handleChange and handleSubmit
+
+    // * Transaction Form handleChange and handleSubmit
     transChange = (e) => {
         const { name, value } = e.target
-// ? are radio buttons special like checkboxes? or do they just use "value" like regular inputs?
         this.setState({
             [name]: value
         })
@@ -109,16 +125,17 @@ addNewGoal = newTrans => {
             transType: this.state.transType,
             transDate: this.state.transDate
         }
-        
+
         this.setState(prevState => ({
             transName: "",
             transAmount: "",
             transType: "",
             transDate: "",
-            transactions: [prevState.transArray, newTrans]
+            transactions: [prevState.transactions, newTrans]
         }))
         console.log(newTrans)
         this.addNewTransaction(newTrans)
+        this.getTransactions()
     }
 
     render() {
@@ -128,21 +145,26 @@ addNewGoal = newTrans => {
                     goalName: this.state.goalName,
                     goalDescription: this.state.goalDescription,
                     goalPrice: this.state.goalPrice,
-                    goalChange: this.goalChange,
-                    goalSubmit: this.goalSubmit,
                     goalDate: this.goalDate,
                     goalArray: this.state.goalArray,
 
+                    getGoals: this.getGoals,
+                    goalChange: this.goalChange,
+                    goalSubmit: this.goalSubmit,
+
+                    transactions: this.state.transactions,
                     transName: this.state.transName,
                     transAmount: this.state.transAmount,
                     transType: this.state.transType,
                     transDate: this.state.transDate,
 
-                    transactions: this.state.transactions,
-                    
                     getTransactions: this.getTransactions,
                     transChange: this.transChange,
                     transSubmit: this.transSubmit,
+                    deleteTransaction: this.deleteTransaction
+
+
+
 
 
 
