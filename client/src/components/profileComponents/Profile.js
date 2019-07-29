@@ -14,7 +14,7 @@ const Profile = (props) => {
         getGoals()
     }, [getGoals])
 
-    props.getMainGoal()
+    // props.getMainGoal()
 
     return (
         <div>
