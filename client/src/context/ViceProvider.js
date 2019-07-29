@@ -18,6 +18,7 @@ class ViceProvider extends Component {
             transAmount: "",
             transType: "",
             transDate: "",
+            total: 0,
         }
     }
 
@@ -29,7 +30,9 @@ class ViceProvider extends Component {
                 this.setState({
                     transactions: res.data
                 })
+                this.calculateTotal()
             })
+            
             .catch(err => console.log(err))
     }
 
@@ -48,17 +51,17 @@ class ViceProvider extends Component {
             .then(res => {
                 alert(res.data.msg)
                 this.getTransactions()
-                }
+            }
             )
             .catch(err => console.log(err))
     }
 
-    updateTransaction = transID => {
-        axios.put(`/transactions/${transID}`)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
-    
+    // updateTransaction = transID => {
+    //     axios.put(`/transactions/${transID}`)
+    //         .then(res => console.log(res))
+    //         .catch(err => console.log(err))
+    // }
+
     // *    Axios Request for Goals
     getGoals = () => {
         axios.get("/goals")
@@ -78,6 +81,16 @@ class ViceProvider extends Component {
                     goalArray: [prevState.goalArray, newGoal]
                 }))
             })
+            .catch(err => console.log(err))
+    }
+
+    deleteGoal = goalID => {
+        axios.delete(`/goals/${goalID}`)
+            .then(res => {
+                alert(res.data.msg)
+                this.getGoals()
+            }
+        )
             .catch(err => console.log(err))
     }
 
@@ -105,7 +118,7 @@ class ViceProvider extends Component {
             goalDate: "",
             goalArray: [...prevState.goalArray, newGoal]
         }))
-        this.addNewGoal()
+        this.addNewGoal(newGoal)
         this.getGoals()
     }
 
@@ -138,6 +151,16 @@ class ViceProvider extends Component {
         this.getTransactions()
     }
 
+    //*Transaction Functions
+    calculateTotal = () => {
+        console.log(this.state.transactions)
+        let total = this.state.transactions.reduce((savings, transaction) => {
+            return transaction.transType === 'income' ? savings + transaction.transAmount : savings - transaction.transAmount
+        }, 0)
+        this.setState({
+            total:total
+        }, () => console.log(total))
+    }
     render() {
         return (
             <ViceContext.Provider
@@ -151,18 +174,21 @@ class ViceProvider extends Component {
                     getGoals: this.getGoals,
                     goalChange: this.goalChange,
                     goalSubmit: this.goalSubmit,
+                    deleteGoal: this.deleteGoal,
 
                     transactions: this.state.transactions,
                     transName: this.state.transName,
                     transAmount: this.state.transAmount,
                     transType: this.state.transType,
                     transDate: this.state.transDate,
+                    total: this.state.total,
+                
 
                     getTransactions: this.getTransactions,
                     transChange: this.transChange,
                     transSubmit: this.transSubmit,
-                    deleteTransaction: this.deleteTransaction
-
+                    deleteTransaction: this.deleteTransaction,
+                    calculateTotal:this.calculateTotal,
 
 
 
