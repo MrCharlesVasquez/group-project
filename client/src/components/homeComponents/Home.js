@@ -9,16 +9,16 @@ const Home = (props) => {
 
 
     useEffect(() => {
-        // getTransactions()
+        getTransactions()
         thermoRef.current.style.height = `${total}%`
-    })
+    },[getTransactions])
 
     console.log(total)
 
     const thermoRef = useRef(total)
     return (
         <div>
-            <div className="outerThermo" style={{ border: " 1px solid black ", height: " 500px"}}>
+            <div className="outerThermo" style={{ border: " 1px solid black ", height: " 500px", width: "100px"}}>
                 <div className="innerThermo" ref={thermoRef} style={{ backgroundColor: " green "}}>
 
                 </div>
