@@ -8,21 +8,20 @@ import { withVice } from '../../context/ViceProvider.js'
 
 
 const Budget = props => {
-    const { getTransactions } = props
+    const { calculateTotal, total, transactions, getTransactions } = props
     
     useEffect(() => {
         // Component Did Mount
         getTransactions()
     }, [getTransactions] )
 
-
     
     
-    console.log(props.transactions)
     return (
             <div>
                 <TransactionForm {...props}/>
                 <TransactionsList {...props}/>
+                <h1>Total: {total}</h1>
                 
             </div>
         )
