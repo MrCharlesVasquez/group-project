@@ -3,9 +3,9 @@ import Goal from './Goal.js';
 
 
 const GoalList = props => {
-    const { goalArray } = props
+    const { goalArray, deleteGoal } = props
 
-    const mappedGoals = goalArray.map((goal, i) => <Goal key={(goal._id ? goal._id : i)} {...goal} />)
+    const mappedGoals = goalArray.map((goal, i) => <Goal key={(goal._id ? goal._id : i)} {...goal} deleteGoal={deleteGoal}/>)
 
     return (
         <div>

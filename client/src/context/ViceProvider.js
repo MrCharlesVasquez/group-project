@@ -53,11 +53,11 @@ class ViceProvider extends Component {
             .catch(err => console.log(err))
     }
 
-    updateTransaction = transID => {
-        axios.put(`/transactions/${transID}`)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
+    // updateTransaction = transID => {
+    //     axios.put(`/transactions/${transID}`)
+    //         .then(res => console.log(res))
+    //         .catch(err => console.log(err))
+    // }
     
     // *    Axios Request for Goals
     getGoals = () => {
@@ -78,6 +78,16 @@ class ViceProvider extends Component {
                     goalArray: [prevState.goalArray, newGoal]
                 }))
             })
+            .catch(err => console.log(err))
+    }
+
+    deleteGoal = goalID => {
+        axios.delete(`/goals/${goalID}`)
+            .then(res => {
+                alert(res.data.msg)
+                this.getGoals()
+            }
+        )
             .catch(err => console.log(err))
     }
 
@@ -105,7 +115,7 @@ class ViceProvider extends Component {
             goalDate: "",
             goalArray: [...prevState.goalArray, newGoal]
         }))
-        this.addNewGoal()
+        this.addNewGoal(newGoal)
         this.getGoals()
     }
 
@@ -151,6 +161,7 @@ class ViceProvider extends Component {
                     getGoals: this.getGoals,
                     goalChange: this.goalChange,
                     goalSubmit: this.goalSubmit,
+                    deleteGoal: this.deleteGoal,
 
                     transactions: this.state.transactions,
                     transName: this.state.transName,
