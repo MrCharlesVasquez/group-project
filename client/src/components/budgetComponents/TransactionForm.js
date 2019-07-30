@@ -10,17 +10,20 @@ const TransactionForm = props => {
                 name="transName" 
                 value={transName} 
                 onChange={transChange} 
+                required
                 placeholder="memo"/>
             <input 
                 type="number" 
                 name="transAmount" 
                 value={transAmount} 
                 onChange={transChange} 
+                required
                 placeholder="amount"/>
             Expense<input 
                 type="radio" 
                 name="transType" 
                 value="expense" 
+                required
                 onChange={transChange}/>
             Income<input 
                 type="radio" 
