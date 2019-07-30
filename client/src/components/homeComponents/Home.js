@@ -5,7 +5,7 @@ import { withVice } from "../../context/ViceProvider.js"
 
 const Home = (props) => {
 
-    const { total, getTransactions, goalArray, mainGoal } = props
+    const { total, getGoals, getTransactions, goalArray, mainGoal } = props
 
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const Home = (props) => {
 
     const thermoRef = useRef(total)
     console.log(mainGoal)
-    const thermoHeight = (total / mainGoal.goalPrice * 100)
+    const thermoHeight = ((total / mainGoal.goalPrice * 100) <= 100 ) ? thermoHeight: 100
     
     const goalLabels = goalArray.map((goal, i) => <p key={(goal._id ? goal._id : i)} style={{ position: "absolute", right: "0", top: `${goal.goalPrice / mainGoal.goalPrice * 100}%`, margin: "0"}}>{goal.goalName} - ${goal.goalPrice}</p>)
     return (
