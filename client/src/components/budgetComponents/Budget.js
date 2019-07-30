@@ -21,7 +21,7 @@ const Budget = props => {
             <div>
                 <TransactionForm {...props}/>
                 <TransactionsList {...props}/>
-                <h1>Total: {total}</h1>
+                <h1>Total: {total.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:2})}</h1>
                 
             </div>
         )

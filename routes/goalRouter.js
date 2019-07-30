@@ -46,7 +46,7 @@ goalRouter.delete("/:_id", (req, res, next) => {
         return res.status(202).send(
             {
                 goal: deletedGoal,
-                msg: `Successfully deleted ${deletedGoal.name}.`
+                msg: `Successfully deleted ${deletedGoal.goalName}.`
             }
         )
     })
