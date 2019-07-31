@@ -20,6 +20,9 @@ class ViceProvider extends Component {
             transType: "",
             transDate: "",
             total: 0,
+
+            user: JSON.parse(localStorage.getItem("user")) || {},
+            token: localStorage.getItem("token") || ""
         }
     }
 
@@ -136,8 +139,6 @@ class ViceProvider extends Component {
     // }
 
 
-    
-
     // * Transaction Form handleChange and handleSubmit
     transChange = (e) => {
         const { name, value } = e.target
@@ -167,7 +168,7 @@ class ViceProvider extends Component {
         this.getTransactions()
     }
 
-    //*Transaction Functions
+    // * Transaction Functions
     calculateTotal = () => {
         console.log(this.state.transactions)
         let total = this.state.transactions.reduce((savings, transaction) => {
@@ -177,6 +178,37 @@ class ViceProvider extends Component {
             total:total
         }, () => console.log(total))
     }
+
+    // * User Authentication Functions
+    signup = credentials => {
+        axios.post("/auth/signup", credentials)
+            .then(res => {
+                const { user, token } = res.data
+                localStorage.setItem("token", token)
+                localStorage.setItem("user", JSON.stringify(user))
+                this.setState({ user, token })
+            })
+            .catch(err => console.log(err))
+    }
+    login = credentials => {
+        axios.post("/auth/login", credentials)
+            .then(res => {
+                const { user, token, } = res.data
+                localStorage.setItem("token", token)
+                localStorage.setItem("user", JSON.stringify(user))
+                this.setState({ user, token })
+            })
+    }
+
+    logout = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        this.setState({
+            user: {},
+            token: ""
+        })
+    }
+
     render() {
         return (
             <ViceContext.Provider
@@ -201,14 +233,18 @@ class ViceProvider extends Component {
                     transDate: this.state.transDate,
                     total: this.state.total,
                 
-
                     getTransactions: this.getTransactions,
                     transChange: this.transChange,
                     transSubmit: this.transSubmit,
                     deleteTransaction: this.deleteTransaction,
                     calculateTotal:this.calculateTotal,
 
+                    user: this.state.user,
+                    token: this.state.token,
 
+                    signup: this.signup,
+                    login: this.login,
+                    logout: this.logout,
 
 
 
