@@ -13,6 +13,7 @@ class ViceProvider extends Component {
             goalDate: "",
             goalArray: [],
             mainGoal:{},
+            goalTotal:0,
 
             transactions: [],
             transName: "",
@@ -25,12 +26,11 @@ class ViceProvider extends Component {
             token: localStorage.getItem("token") || ""
         }
     }
-
+    
     // * Axios requests
     getTransactions = () => {
         axios.get("/transactions")
             .then(res => {
-                console.log(res)
                 this.setState({
                     transactions: res.data
                 })
@@ -41,10 +41,16 @@ class ViceProvider extends Component {
     }
 
     addNewTransaction = newTrans => {
+        
         axios.post("/transactions", newTrans)
-            .then(res => {
+            .then(res => { 
+                console.log(res.data)
                 this.setState(prevState => ({
-                    transactions: [prevState.transactions, newTrans]
+                    transactions: [...prevState.transactions, newTrans]
+                // }, () => {
+                //     this.getTransactions()
+                //     this.calculateTotal()
+                //     console.log ('test')
                 }))
             })
             .catch(err => console.log(err))
@@ -65,15 +71,20 @@ class ViceProvider extends Component {
     //         .then(res => console.log(res))
     //         .catch(err => console.log(err))
     // }
+
     // *    Axios Request for Goals
     getGoals = () => {
         axios.get("/goals")
             .then(res => {
                const goalArray = res.data.sort((a, b) => (b.goalPrice - a.goalPrice))
-               console.log(goalArray[0])
+               const goalTotal = goalArray.reduce ((sum, x) => {
+                   sum += x.goalPrice
+                   return sum
+                }, 0)
+            
                 this.setState({
                     goalArray,
-                    mainGoal: goalArray[0]
+                    goalTotal
                 })
             })
             .catch(err => console.log(err))
@@ -83,7 +94,7 @@ class ViceProvider extends Component {
         axios.post("/goals", newGoal)
             .then(res => {
                 this.setState(prevState => ({
-                    goalArray: [prevState.goalArray, newGoal]
+                    goalArray: [...prevState.goalArray, newGoal]
                 }))
             })
             .catch(err => console.log(err))
@@ -121,11 +132,13 @@ class ViceProvider extends Component {
             goalDescription: "",
             goalPrice: 0,
             goalDate: "",
-            goalArray: [...prevState.goalArray, newGoal]
+            // goalArray: [...prevState.goalArray, newGoal]
         }))
         this.addNewGoal(newGoal)
         this.getGoals()
     }
+    
+    
 
     // getMainGoal = e => {
     //     const { goalArray } = this.state
@@ -161,22 +174,22 @@ class ViceProvider extends Component {
             transAmount: "",
             transType: "",
             transDate: "",
-            transactions: [prevState.transactions, newTrans]
+            // transactions: [...prevState.transactions, newTrans]
+            
         }))
-        console.log(newTrans)
+        
         this.addNewTransaction(newTrans)
-        this.getTransactions()
+        
     }
 
     // * Transaction Functions
     calculateTotal = () => {
-        console.log(this.state.transactions)
         let total = this.state.transactions.reduce((savings, transaction) => {
             return transaction.transType === 'income' ? savings + transaction.transAmount : savings - transaction.transAmount
         }, 0)
         this.setState({
             total:total
-        }, () => console.log(total))
+        })
     }
 
     // * User Authentication Functions
@@ -219,6 +232,7 @@ class ViceProvider extends Component {
                     goalDate: this.goalDate,
                     goalArray: this.state.goalArray,
                     mainGoal: this.state.mainGoal,
+                    goalTotal: this.state.goalTotal,
 
                     getGoals: this.getGoals,
                     goalChange: this.goalChange,

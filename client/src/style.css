@@ -1,0 +1,324 @@
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+/*/          NavBar          */
+
+
+
+
+
+
+.sideBarTitle{
+    display: flex;
+    justify-content: center;
+    font-family: 'Abril Fatface', cursive;;
+    font-size: 20px;
+    color:#16a6a9;
+}
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: fixed;
+    width: 45px;
+    height: 40px;
+    left: 40px;
+    top: 40px;
+}
+ /* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: #09b0b3;
+}
+   
+  /* Color/shape of burger icon bars on hover*/
+  .bm-burger-bars-hover {
+    background: #09b0b3;
+    cursor: pointer;
+  }
+     
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #fe7905;
+  }
+   
+  /* General sidebar styles */
+  .bm-menu {
+    background-image:linear-gradient(rgb(52, 52, 70), rgb(35, 25, 82));
+    padding: 4em 2em 0;
+    font-size: 2em;
+    font-family: 'Racing Sans One', cursive;
+  }
+
+  input:focus{
+      outline: 0;
+  }
+
+  
+   
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+   
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #2f9ce4;
+    padding: 0.8em;
+  }
+   
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
+  }
+   
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .menu-item{
+      color: azure;
+      text-decoration-line: none;
+      border: none;
+      display: flex;
+  }
+
+
+
+
+
+
+
+/* Transaction Form */
+
+
+
+
+
+.trans-formContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    font-family:'Roboto', sans-serif;
+    background-image: linear-gradient(rgb(52, 52, 70), rgb(35, 25, 82));
+    color:azure;
+    padding: 10px
+ 
+}
+
+.trans-form{
+
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 10px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.trans-form>input{
+padding: 15px;
+margin:10px;
+border-radius: 30px;
+border: 3px solid rgb(170, 127, 255);
+}
+
+.transSubmitButton{
+    color: azure;
+    background-color: #6716a9;
+    border-radius: 30px;
+    border: 5px solid rgb(170, 127, 255);
+    font-size: 20px;
+    padding: 10px;
+    box-shadow: 0px 10px 10px 10px rgba(3, 12, 12, 0.803)
+
+   
+}
+
+
+
+
+
+
+/*     Transaction.js Cards    */
+
+
+
+
+
+.transaction-div{
+    
+    border-radius: 40px 40px 40px 40px;
+    background-image: linear-gradient(rgb(26, 18, 65), rgb(21, 18, 29));
+    color: azure;
+    font-family: 'Racing Sans One', cursive;
+    display: grid;
+    height: 200px;
+    width: 350px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 10px;
+}
+
+.trans-divContainer{
+    background-color: rgb(35, 25, 82);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+   
+}
+
+.transName{
+    align-content: center;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+.transType{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 20px;
+}
+.transAmount{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 20px
+}
+
+.delTransBut{
+    background-color:  rgb(170, 127, 255);
+    color:azure;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 10px;
+    border: 2px  solid  #6716a9;
+    font-family:'Roboto', sans-serif;
+    box-shadow: 0px 3px 3px 3px rgba(43, 22, 175, 0.515);
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: flex;
+    justify-content: center;
+
+}
+
+.delTransBut:hover{
+    background-color: #16a6a9;
+}
+
+
+
+
+ /*    Buttons style    */
+
+
+
+
+
+button:focus{
+    outline: 0;
+}
+
+    /* Radio Button */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+  
+     /* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    border:  aquamarine;
+    box-shadow: 0px 5px 5px 5px rgba(3, 12, 12, 0.803)
+}
+  
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+    /* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: rgb(12, 189, 163);
+}
+  
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+    /* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+    /* Style the indicator (dot/circle) */
+.container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+}
+
+
+
+
+/*      Budget.js     */
+
+.BudgetTotal{
+    background-color: #09b0b3;
+    margin: 20px 20px 20px 20px;
+    padding: 20px 20px 40px 30px;
+    border-radius: 20px 10px 100px 10px;
+    font-family: 'Racing Sans One', cursive;
+    color:rgb(11, 6, 38);
+}
+
+.BudgetContainer{
+    background-color:blueviolet ;
+    
+}
+
+.BudgetOuterContainer{
+    background-color:blueviolet ;
+}
