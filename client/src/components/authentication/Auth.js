@@ -42,7 +42,7 @@ class Auth extends Component {
     render(){
         return(
             <div>
-                { this.state.toggle ?
+                { !this.state.toggle ?
                     <>
                     <AuthForm 
                         handleChange={this.handleChange}

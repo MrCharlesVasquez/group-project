@@ -25,9 +25,24 @@ const App = (props) =>{
                     token={token}
                     exact path="/"
                     component={Home}
-                    redirectTo="/auth/login"
+                    redirectTo="/auth"
                     user={user}
-                    />
+                />
+                <ProtectedRoute
+                    token={token}
+                    exact path="/"
+                    component={Profile}
+                    redirectTo="/auth"
+                    user={user}
+                />
+                <ProtectedRoute
+                    token={token}
+                    exact path="/"
+                    component={Budget}
+                    redirectTo="/auth"
+                    user={user}
+                />
+
                 <Route path="/Profile" component={Profile} />
                 <Route path="/Budget" component={Budget} />
             </Switch>
