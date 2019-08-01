@@ -5,30 +5,28 @@ import { withVice } from "../../context/ViceProvider.js"
 
 const Home = (props) => {
 
-    const { goalTotal, total, getGoals, getTransactions, goalArray, mainGoal } = props
-
-
+    const { goalTotal, total, getGoals, getTransactions, goalArray, mainGoal, thermoHeight  } = props
+    
     useEffect(() => {
         getTransactions()
-        
     }, [getTransactions])
 
     useEffect(() => {
         getGoals()
         thermoRef.current.style.height = `${thermoHeight}%`
-    }, [getGoals])
+    }, [getGoals, thermoHeight])
 
     const thermoRef = useRef(total)
-    const mathPart = (total / goalTotal.goalPrice * 100)
-    const thermoHeight = (mathPart <= 100) ? mathPart : 100
 
     const goalLabels = goalArray.map((goal, i) => <p key={(goal._id ? goal._id : i)} style={{ position: "absolute", right: "0", top: `${goal.goalPrice / goalTotal * 100}%`, margin: "0" }}>{goal.goalName} - ${goal.goalPrice}</p>)
     return (
         <div>
+            <div>
+                <h1>Goal : {mainGoal.goalName}</h1>
+            </div>
             <div className="graphic" style={{ border: " 1px solid black ", height: " 500px", width: "200px", position: "relative" }}>
-                {/* <p style={{ position: "absolute", right: "0", top: `${thermoHeight}%`}}> dummy </p> */}
                 {goalLabels}
-                
+
                 <div className="outerThermo" style={{ border: " 1px solid black ", height: " 500px", width: "100px" }}>
                     <div className="innerThermo" ref={thermoRef} style={{ backgroundColor: " green " }}>
 

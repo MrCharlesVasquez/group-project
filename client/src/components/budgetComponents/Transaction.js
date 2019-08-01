@@ -2,7 +2,7 @@ import React from 'react'
 
 const Transaction = props => {
     const { transName, transAmount, transType, deleteTransaction, _id } = props
-    console.log(transAmount)
+    
     return(
         <div className="transaction-div" style={{border: "1px solid black"}}>
             <h1>{transName}</h1>
