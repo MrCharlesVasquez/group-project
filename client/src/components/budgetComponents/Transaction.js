@@ -2,7 +2,7 @@ import React from 'react'
 
 const Transaction = props => {
     const { transName, transAmount, transType, deleteTransaction, _id } = props
-    console.log(transAmount)
+    
 
     return (
 
