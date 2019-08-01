@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { bubble as Menu } from 'react-burger-menu'
+import { stack as Menu } from 'react-burger-menu'
 
 
 class NavBar extends React.Component {

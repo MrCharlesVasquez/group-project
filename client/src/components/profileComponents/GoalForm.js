@@ -8,11 +8,12 @@ const GoalForm = (props) => {
     const {  goalSubmit, goalName, goalDescription, goalPrice, goalDate, goalChange,   } = props
 
     return (
-        <div id="goalOuterContainer" >
+        <div className="goal-formContainer" >
 
-            <h1> Goal Form </h1>
+            <h1 className="GOAL"> Goal Form </h1>
+            <img src="" alt=""/>
 
-            <form onSubmit={goalSubmit}>
+            <form onSubmit={goalSubmit} className="goal-form">
                 <input
                     type="text"
                     name="goalName"
