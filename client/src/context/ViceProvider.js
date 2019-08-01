@@ -24,6 +24,7 @@ class ViceProvider extends Component {
 
             mathPart: null,
             thermoHeight: null,
+            deadline:''
         }
     }
     
@@ -154,6 +155,16 @@ class ViceProvider extends Component {
             thermoHeight
         })
     }
+    setTimer = () => {
+        if(this.state.mainGoal.goalDate !== undefined){
+            const {mainGoal} = this.state
+            let time = mainGoal.goalDate.slice(0 , 10)
+            this.setState({
+                deadline:time
+            })
+            console.log(this.state.deadline)
+        }
+    }
     
     
 
@@ -244,7 +255,8 @@ class ViceProvider extends Component {
 
                     thermoHeight: this.state.thermoHeight,
                     mathPart: this.state.mathPart,
-
+                    setTimer: this.setTimer,
+                    deadline: this.state.deadline,
 
 
 
