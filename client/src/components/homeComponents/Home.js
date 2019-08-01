@@ -22,6 +22,8 @@ const Home = (props) => {
     const thermoRef = useRef(total)
 
 
+    // todo: move count stuff to here. import clock. get rid of count
+
     const goalLabels = goalArray.map((goal, i) => <p key={(goal._id ? goal._id : i)} style={{ position: "absolute", right: "0", top: `${goal.goalPrice / goalTotal * 100}%`, margin: "0" }}>{goal.goalName} - ${goal.goalPrice}</p>)
     return (
         <div>
