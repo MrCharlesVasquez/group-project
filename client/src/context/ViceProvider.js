@@ -26,7 +26,7 @@ class ViceProvider extends Component {
             transactions: [],
             transName: "",
             transAmount: "",
-            transType: "",
+            transType: "expense",
             transDate: "",
             total: 0,
 
@@ -170,9 +170,9 @@ class ViceProvider extends Component {
         })
     }
     setTimer = () => {
-        if(this.state.mainGoal.goalDate !== undefined){
+        if(this.state.mainGoal!== undefined){
             const {mainGoal} = this.state
-            let time = mainGoal.goalDate.slice(0 , 10)
+            let time = mainGoal.goalDate && mainGoal.goalDate.slice(0 , 10)
             this.setState({
                 deadline:time
             })
@@ -214,7 +214,7 @@ class ViceProvider extends Component {
         this.setState(prevState => ({
             transName: "",
             transAmount: "",
-            transType: "",
+            transType: "expense",
             transDate: "",
             // transactions: [...prevState.transactions, newTrans]
             

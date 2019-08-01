@@ -5,19 +5,20 @@ import Clock from './Clock.js'
 
 
 const Home = (props) => {
-
+console.log(props)
     const { deadline, setTimer, goalTotal, total, getGoals, getTransactions, goalArray, mainGoal, thermoHeight } = props
 
     useEffect(() => {
         getTransactions()
-    }, [getTransactions])
+        getGoals()
+    }, [getTransactions, getGoals])
 
     useEffect(() => {
-        getGoals()
+        // thermoRef.current.style.height = `${thermoHeight}`
 
         thermoRef.current.style.height = `${thermoHeight}%`
         setTimer()
-    }, [getGoals, thermoHeight, setTimer])
+    }, [thermoHeight, setTimer])
 
     const thermoRef = useRef(total)
 
@@ -26,7 +27,7 @@ const Home = (props) => {
     return (
         <div>
             <div>
-                <h1>Goal : {mainGoal.goalName}</h1>
+               {!mainGoal ? <h1>"Set up your savings goals in profile!"</h1> : <h1>Goal : {mainGoal.goalName}</h1> }
             </div>
             <div className="App">
                 <div className="App-title">Countdown Timer</div>
