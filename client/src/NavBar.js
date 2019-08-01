@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { stack as Menu } from 'react-burger-menu'
 
+
 class NavBar extends React.Component {
     constructor() {
         super()
@@ -22,6 +23,7 @@ class NavBar extends React.Component {
 
 
     render() {
+        const { logout, token } = this.props
 
         return (
             <div>
@@ -33,6 +35,7 @@ class NavBar extends React.Component {
                         <Link id="profile" className="menu-item" onClick={() => this.closeMenu()} to="/profile"> Profile </Link>
                         <Link id="budget" className="menu-item" onClick={() => this.closeMenu()} to="/budget"> Budget </Link>
                         {/* <a onClick={ this.showSettings } className="menu-item-small" href="">settings</a> */}
+                        <button onClick={logout}>Logout</button>
                     </div>
                 </Menu>
             </div >

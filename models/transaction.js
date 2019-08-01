@@ -17,6 +17,11 @@ const transactionSchema = new Schema({
     },
     transDate: {
         type: Date,
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 })
 
