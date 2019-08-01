@@ -154,9 +154,7 @@ border: 3px solid rgb(170, 127, 255);
 }
 
 .transSubmitButton{
-    display: flex;
-    justify-self: center;
-    align-self: center;
+    
     color: azure;
     background-color: #6716a9;
     border-radius: 30px;
@@ -164,7 +162,7 @@ border: 3px solid rgb(170, 127, 255);
     font-size: 20px;
     padding: 15px;
     margin: 10px;
-    width:150px;
+    width: 200px;
     box-shadow: 0px 10px 10px 10px rgba(3, 12, 12, 0.803);
     transition-property: all;
     transition-duration: 500ms;
@@ -186,7 +184,13 @@ border: 3px solid rgb(170, 127, 255);
 /*     Transaction.js Cards    */
 
 
-
+.trans-divContainer{
+    background-color: rgb(35, 25, 82);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+   
+}
 
 
 .transaction-div{
@@ -195,7 +199,7 @@ border: 3px solid rgb(170, 127, 255);
     background-image: linear-gradient(rgb(26, 18, 65), rgb(21, 18, 29));
     color: azure;
     font-family: 'Racing Sans One', cursive;
-    height: 200px;
+    height: 225px;
     width: 350px;
     margin: 20px;
     display: grid;
@@ -204,12 +208,12 @@ border: 3px solid rgb(170, 127, 255);
     grid-column-gap: 5px;
 }
 
-.trans-divContainer{
-    background-color: rgb(35, 25, 82);
-    display: flex;
-    justify-content: center;
-    align-content: center;
-   
+.transType{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 20px;
 }
 
 .transName{
@@ -224,13 +228,7 @@ border: 3px solid rgb(170, 127, 255);
     
 }
 
-.transType{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    padding: 20px;
-}
+
 .transAmount{
     grid-column-start: 5;
     grid-column-end: 8;
@@ -239,6 +237,7 @@ border: 3px solid rgb(170, 127, 255);
     padding: 10px 5px 0px 0px;
     position: auto;
     object-fit: cover;
+    align-items:right;
     
 }
 
@@ -327,7 +326,7 @@ button:focus{
   
     /* Style the indicator (dot/circle) */
 .container .checkmark:after {
-       top: 9px;
+    top: 9px;
       left: 9px;
       width: 8px;
       height: 8px;
@@ -377,7 +376,7 @@ button:focus{
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     font-family:'Roboto', sans-serif;
-    background-image: linear-gradient(rgb(83, 215, 164), rgb(16, 118, 79)); 
+    background-image: linear-gradient(rgb(8, 199, 180), rgb(249, 249, 250)); 
     color:azure;
     padding: 10px
 
@@ -405,7 +404,7 @@ button:focus{
     
 }
 
-.goalButton{
+.goalSubmitButton{
         color: azure;
         background-color: #09b0b3;
         border-radius: 30px;
@@ -418,7 +417,7 @@ button:focus{
         transition-timing-function: ease-in-out;
 }
     
-    .goalButton:hover{
+    .goalSubmitButton:hover{
        background-color: #6716a9;
         cursor: pointer; 
         
@@ -453,4 +452,83 @@ button:focus{
     grid-row-end: 2;
     padding: 10px;
     
+}
+
+.goal-divContainer{
+    background-color:rgb(249, 249, 250);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.goal-div{
+     
+    border-radius: 40px 40px 40px 40px;
+    background-image: linear-gradient(rgb(18, 91, 124), rgb(21, 18, 29));
+    color: azure;
+    font-family: 'Racing Sans One', cursive;
+    height: 225px;
+    width: 350px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-auto-rows: repeat(6, 25px);
+    grid-column-gap: 5px;
+
+}
+
+.goalDescription{
+    align-content: center;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.goalPrice{
+    grid-column-start: 5;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 10px 5px 0px 0px;
+    position: auto;
+    object-fit: cover;
+    align-items:right;
+}
+
+.goalDelButton{
+    background-color:  #09b0b3;
+    color:azure;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 10px;
+    border: 2px  solid  aquamarine;
+    font-family:'Roboto', sans-serif;
+    box-shadow: 0px 4px 3px 3px rgba(22, 114, 175, 0.515);
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+}
+.goalDate{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    margin:5px;
+  
+}
+
+.goalName{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 20px;
 }

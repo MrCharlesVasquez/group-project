@@ -7,7 +7,7 @@ import Home from './components/homeComponents/Home.js';
 import Auth from './components/authentication/Auth.js'
 import ProtectedRoute from './shared/ProtectedRoute.js';
 import { withVice } from './context/ViceProvider.js';
-import "./style.css";
+import "./styles/style.css"
 
 
 
