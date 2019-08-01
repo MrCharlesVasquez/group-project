@@ -30,14 +30,12 @@ class ViceProvider extends Component {
             transDate: "",
             total: 0,
 
-<<<<<<< HEAD
             user: JSON.parse(localStorage.getItem("user")) || {},
             token: localStorage.getItem("token") || "",
             authErrMsg: "",
-=======
+            
             mathPart: null,
             thermoHeight: null,
->>>>>>> master
         }
     }
     
