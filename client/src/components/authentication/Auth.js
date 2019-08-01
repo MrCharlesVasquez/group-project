@@ -15,6 +15,7 @@ class Auth extends Component {
 
     toggler = () => {
         this.setState(prevState => ({ toggle: !prevState.toggle }))
+        this.props.clearAuthErr()
     }
 
     handleChange = e => {
@@ -54,6 +55,7 @@ class Auth extends Component {
                         btnText="Signup"
                     />
                     <button onClick={this.toggler}>Already have an account?</button>
+                    <p style={{ color: "red" }}>{this.props.authErrMsg}</p>
                     </>
                   :
                     <>
@@ -65,6 +67,7 @@ class Auth extends Component {
                         btnText="Login"
                     />
                     <button onClick={this.toggler}>Don't have an account yet?</button>
+                    <p style={{ color: "red" }}>{this.props.authErrMsg}</p>
                     </>
                 }
             </div>

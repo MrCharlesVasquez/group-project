@@ -31,7 +31,8 @@ class ViceProvider extends Component {
             total: 0,
 
             user: JSON.parse(localStorage.getItem("user")) || {},
-            token: localStorage.getItem("token") || ""
+            token: localStorage.getItem("token") || "",
+            authErrMsg: "",
         }
     }
     
@@ -203,6 +204,13 @@ class ViceProvider extends Component {
     }
 
     // * User Authentication Functions
+    handleAuthErr = errMsg => {
+        this.setState({ authErrMsg: errMsg })
+    }
+    clearAuthErr = () => {
+        this.setState({ authErrMsg: "" })
+    }
+
     signup = credentials => {
         userAxios.post("/auth/signup", credentials)
             .then(res => {
@@ -211,7 +219,7 @@ class ViceProvider extends Component {
                 localStorage.setItem("user", JSON.stringify(user))
                 this.setState({ user, token })
             })
-            .catch(err => console.log(err))
+            .catch(err => this.handleAuthErr(err.response.data.errMsg))
     }
     login = credentials => {
         userAxios.post("/auth/login", credentials)
@@ -221,6 +229,7 @@ class ViceProvider extends Component {
                 localStorage.setItem("user", JSON.stringify(user))
                 this.setState({ user, token })
             })
+            .catch(err => this.handleAuthErr(err.response.data.errMsg))
     }
 
     logout = () => {
@@ -228,7 +237,8 @@ class ViceProvider extends Component {
         localStorage.removeItem("user")
         this.setState({
             user: {},
-            token: ""
+            token: "",
+            authErrMsg: ""
         })
     }
 
@@ -265,10 +275,13 @@ class ViceProvider extends Component {
 
                     user: this.state.user,
                     token: this.state.token,
+                    authErrMsg: this.state.authErrMsg,
 
                     signup: this.signup,
                     login: this.login,
                     logout: this.logout,
+                    clearAuthErr: this.clearAuthErr,
+                    
 
 
 
