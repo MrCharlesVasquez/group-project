@@ -5,7 +5,7 @@ import Profile from './components/profileComponents/Profile.js';
 import Budget from './components/budgetComponents/Budget.js';
 import Home from './components/homeComponents/Home.js';
 import { withVice } from './context/ViceProvider.js';
-import "./style.css"
+import "./styles/style.css"
 
 
 

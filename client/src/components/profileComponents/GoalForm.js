@@ -10,7 +10,7 @@ const GoalForm = (props) => {
     return (
         <div className="goal-formContainer" >
 
-            <h1 className="GOAL"> Goal Form </h1>
+            <h1 className="GOAL"> REWARDS </h1>
             <img src="" alt=""/>
 
             <form onSubmit={goalSubmit} className="goal-form">
@@ -41,7 +41,7 @@ const GoalForm = (props) => {
                     value={goalDate}
                     onChange={goalChange} />
 
-                <button className="goalButton">Submit</button>
+                <button className="goalSubmitButton">Submit</button>
 
             </form>
 
