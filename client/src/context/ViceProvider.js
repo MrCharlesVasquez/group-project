@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 const ViceContext = React.createContext()
+const userAxios = axios.create()
+// * userAxios Interceptor
+userAxios.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token")
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
+
 
 class ViceProvider extends Component {
     constructor() {
@@ -29,8 +37,9 @@ class ViceProvider extends Component {
     
     // * Axios requests
     getTransactions = () => {
-        axios.get("/transactions")
+        userAxios.get("/api/transactions")
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     transactions: res.data
                 })
@@ -42,22 +51,24 @@ class ViceProvider extends Component {
 
     addNewTransaction = newTrans => {
         
-        axios.post("/transactions", newTrans)
+        userAxios.post("/api/transactions", newTrans)
             .then(res => { 
                 console.log(res.data)
                 this.setState(prevState => ({
                     transactions: [...prevState.transactions, newTrans]
+                
                 // }, () => {
                 //     this.getTransactions()
                 //     this.calculateTotal()
                 //     console.log ('test')
                 }))
+                this.getTransactions()
             })
             .catch(err => console.log(err))
     }
 
     deleteTransaction = transID => {
-        axios.delete(`/transactions/${transID}`)
+        userAxios.delete(`/api/transactions/${transID}`)
             .then(res => {
                 alert(res.data.msg)
                 this.getTransactions()
@@ -67,14 +78,14 @@ class ViceProvider extends Component {
     }
 
     // updateTransaction = transID => {
-    //     axios.put(`/transactions/${transID}`)
+    //     userAxios.put(`/transactions/${transID}`)
     //         .then(res => console.log(res))
     //         .catch(err => console.log(err))
     // }
 
-    // *    Axios Request for Goals
+    // *    uAxios Request for Goals
     getGoals = () => {
-        axios.get("/goals")
+        userAxios.get("/api/goals")
             .then(res => {
                const goalArray = res.data.sort((a, b) => (b.goalPrice - a.goalPrice))
                const goalTotal = goalArray.reduce ((sum, x) => {
@@ -91,7 +102,7 @@ class ViceProvider extends Component {
     }
 
     addNewGoal = newGoal => {
-        axios.post("/goals", newGoal)
+        userAxios.post("/api/goals", newGoal)
             .then(res => {
                 this.setState(prevState => ({
                     goalArray: [...prevState.goalArray, newGoal]
@@ -101,7 +112,7 @@ class ViceProvider extends Component {
     }
 
     deleteGoal = goalID => {
-        axios.delete(`/goals/${goalID}`)
+        userAxios.delete(`/api/goals/${goalID}`)
             .then(res => {
                 alert(res.data.msg)
                 this.getGoals()
@@ -177,7 +188,6 @@ class ViceProvider extends Component {
             // transactions: [...prevState.transactions, newTrans]
             
         }))
-        
         this.addNewTransaction(newTrans)
         
     }
@@ -194,7 +204,7 @@ class ViceProvider extends Component {
 
     // * User Authentication Functions
     signup = credentials => {
-        axios.post("/auth/signup", credentials)
+        userAxios.post("/auth/signup", credentials)
             .then(res => {
                 const { user, token } = res.data
                 localStorage.setItem("token", token)
@@ -204,7 +214,7 @@ class ViceProvider extends Component {
             .catch(err => console.log(err))
     }
     login = credentials => {
-        axios.post("/auth/login", credentials)
+        userAxios.post("/auth/login", credentials)
             .then(res => {
                 const { user, token, } = res.data
                 localStorage.setItem("token", token)

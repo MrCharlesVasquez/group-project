@@ -50,24 +50,12 @@ goalRouter.post("/", (req, res, next) => {
 
 // * Delete
 goalRouter.delete("/:_id", (req, res, next) => {
-<<<<<<< HEAD
     Goal.findOneAndRemove(
         { _id: req.params._id, user: req.user._id }, 
         (err, deletedGoal) => {
             if(err){
                 res.status(500)
                 return next(err)
-=======
-    Goal.findOneAndRemove({ _id: req.params._id }, (err, deletedGoal) => {
-        if (err){
-            res.status(500)
-            return next (err)
-        }
-        return res.status(202).send(
-            {
-                goal: deletedGoal,
-                msg: `Successfully deleted ${deletedGoal.goalName}.`
->>>>>>> master
             }
             return res.status(202).send(
                 {

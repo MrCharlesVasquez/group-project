@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthForm from './AuthForm.js'
+import Navbar from '../../NavBar.js'
 import { withVice } from '../../context/ViceProvider.js'
 
 class Auth extends Component {
@@ -42,6 +43,7 @@ class Auth extends Component {
     render(){
         return(
             <div>
+                <Navbar token={this.props.token} logout={this.props.logout}/>
                 { !this.state.toggle ?
                     <>
                     <AuthForm 

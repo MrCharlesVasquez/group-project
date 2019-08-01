@@ -16,11 +16,17 @@ const App = (props) =>{
     return(
         <div>
            
-           { token && <NavBar token={token} logout={logout} /> }
+           { token && <NavBar {...props} /> }
            
             <Switch>
                 {/* <Route exact path="/" component={Home}/>  */}
-                <Route path="/auth" component={Auth} />
+                <Route 
+                    path="/auth" 
+                    render={rProps => !token ?
+                            <Auth {...rProps}/>
+                            :
+                            <Redirect to="/"/>}
+                    />
                 <ProtectedRoute
                     token={token}
                     exact path="/"
@@ -30,21 +36,28 @@ const App = (props) =>{
                 />
                 <ProtectedRoute
                     token={token}
-                    exact path="/"
+                    path="/Profile"
                     component={Profile}
                     redirectTo="/auth"
                     user={user}
                 />
                 <ProtectedRoute
                     token={token}
-                    exact path="/"
+                    path="/Budget"
                     component={Budget}
                     redirectTo="/auth"
                     user={user}
                 />
+                {/* <ProtectedRoute
+                    token={token}
+                    path="/auth"
+                    component={Auth}
+                    redirectTo="/"
+                    user={user}
+                /> */}
 
-                <Route path="/Profile" component={Profile} />
-                <Route path="/Budget" component={Budget} />
+                {/* <Route path="/Profile" component={Profile} />
+                <Route path="/Budget" component={Budget} /> */}
             </Switch>
 
             

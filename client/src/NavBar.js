@@ -23,7 +23,7 @@ class NavBar extends React.Component {
 
 
     render() {
-        const { logout, token } = props
+        const { logout, token } = this.props
 
         return (
             <div>
