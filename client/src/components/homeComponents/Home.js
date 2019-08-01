@@ -5,8 +5,8 @@ import { withVice } from "../../context/ViceProvider.js"
 
 const Home = (props) => {
 
-    const { goalTotal, total, getGoals, getTransactions, goalArray, mainGoal, thermoHeight  } = props
-    
+    const { goalTotal, total, getGoals, getTransactions, goalArray, mainGoal, thermoHeight } = props
+
     useEffect(() => {
         getTransactions()
     }, [getTransactions])
@@ -24,16 +24,24 @@ const Home = (props) => {
             <div>
                 <h1>Goal : {mainGoal.goalName}</h1>
             </div>
-            <div className="graphic" style={{ border: " 1px solid black ", height: " 500px", width: "200px", position: "relative" }}>
-                {goalLabels}
 
-                <div className="outerThermo" style={{ border: " 1px solid black ", height: " 500px", width: "100px" }}>
-                    <div className="innerThermo" ref={thermoRef} style={{ backgroundColor: " green " }}>
+            <div className="outerContainer">
+                <div className="home-container">
+                    <div className="graphic" style={{ border: " 1px solid black ", height: " 500px", width: "200px", position: "relative" }}>
+                        {/* <p style={{ position: "absolute", right: "0", top: `${thermoHeight}%`}}> dummy </p> */}
+                        {goalLabels}
 
+                        <div className="outerThermo" style={{ border: " 1px solid black ", height: " 500px", width: "100px" }}>
+                            <div className="innerThermo" ref={thermoRef} style={{ backgroundColor: " green " }}>
+
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+                <h1>Total Savings: {total}</h1>
             </div>
-            <h1>Total Savings: {total}</h1>
+
         </div>
     )
 }
