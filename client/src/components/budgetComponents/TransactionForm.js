@@ -6,6 +6,7 @@ const TransactionForm = props => {
     return (
 
         <div className="trans-formContainer">
+        <h1 className="vice">VICE</h1>
             <form onSubmit={transSubmit} className="trans-form">
                 <input
                     type="text"
@@ -22,23 +23,23 @@ const TransactionForm = props => {
                     required
                     placeholder="amount" />
 
-                <label class="container">
+                <label className="container">
                     Expense<input className="radio"
                         type="radio"
                         name="transType"
                         value="expense"
                         onChange={transChange}
                         required />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                 </label>
 
-                <label class="container">
+                <label className="container">
                     Income<input className="radio"
                         type="radio"
                         name="transType"
                         value="income"
                         onChange={transChange} />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                 </label>
                 <input
                     type="date"

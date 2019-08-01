@@ -23,7 +23,7 @@ const Budget = props => {
             <div className="BudgetContainer">
                 <TransactionForm {...props} />
                 <TransactionsList {...props} />
-                <h1 className="BudgetTotal" >Total: <span style={{ color: "azure" }}> {total.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</span></h1>
+                <h1 className="BudgetTotal" >Total: <span className="totalSpan"> ${total.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</span></h1>
 
             </div>
         </div>
