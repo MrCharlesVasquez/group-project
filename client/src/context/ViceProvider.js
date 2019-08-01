@@ -9,11 +9,11 @@ class ViceProvider extends Component {
         this.state = {
             goalName: "",
             goalDescription: "",
-            goalPrice: 0,
+            goalPrice: "",
             goalDate: "",
             goalArray: [],
             mainGoal:{},
-            goalTotal:0,
+            goalTotal: 0,
 
             transactions: [],
             transName: "",
@@ -21,6 +21,9 @@ class ViceProvider extends Component {
             transType: "",
             transDate: "",
             total: 0,
+
+            mathPart: null,
+            thermoHeight: null,
         }
     }
     
@@ -30,8 +33,11 @@ class ViceProvider extends Component {
             .then(res => {
                 this.setState({
                     transactions: res.data
-                })
-                this.calculateTotal()
+                }, () => this.calculateTotal(),
+                )
+                // this.calculateTotal()
+                
+                
             })
             
             .catch(err => console.log(err))
@@ -49,6 +55,7 @@ class ViceProvider extends Component {
                 //     this.calculateTotal()
                 //     console.log ('test')
                 }))
+                this.getTransactions()
             })
             .catch(err => console.log(err))
     }
@@ -81,10 +88,13 @@ class ViceProvider extends Component {
             
                 this.setState({
                     goalArray,
-                    goalTotal
-                })
+                    goalTotal,
+                    mainGoal: goalArray[0]
+
+                }, () => this.setThermo())
             })
             .catch(err => console.log(err))
+            
     }
 
     addNewGoal = newGoal => {
@@ -113,7 +123,7 @@ class ViceProvider extends Component {
         const { name, value } = e.target
         this.setState({
             [name]: value
-        }, () => console.log(name))
+        })
     }
 
     goalSubmit = e => {
@@ -127,12 +137,22 @@ class ViceProvider extends Component {
         this.setState(prevState => ({
             goalName: "",
             goalDescription: "",
-            goalPrice: 0,
+            goalPrice: "",
             goalDate: "",
             // goalArray: [...prevState.goalArray, newGoal]
         }))
         this.addNewGoal(newGoal)
         this.getGoals()
+    }
+
+    // * Home Functions
+    setThermo = () => {
+        const mathPart = (this.state.total / this.state.goalTotal * 100)
+        const thermoHeight = (mathPart <= 100) ? mathPart : 100
+        this.setState({
+            mathPart,
+            thermoHeight
+        })
     }
     
     
@@ -188,7 +208,7 @@ class ViceProvider extends Component {
         }, 0)
         this.setState({
             total:total
-        })
+        }, () => this.getGoals())
     }
     render() {
         return (
@@ -221,6 +241,9 @@ class ViceProvider extends Component {
                     transSubmit: this.transSubmit,
                     deleteTransaction: this.deleteTransaction,
                     calculateTotal:this.calculateTotal,
+
+                    thermoHeight: this.state.thermoHeight,
+                    mathPart: this.state.mathPart,
 
 
 
