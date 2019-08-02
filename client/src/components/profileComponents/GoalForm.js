@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from '../../images/REWARD1.png'
 
 
 
@@ -9,9 +10,12 @@ const GoalForm = (props) => {
 
     return (
         <div className="goal-formContainer" >
-
-            <h1 className="GOAL"> REWARDS </h1>
-            <img src="" alt=""/>
+            
+            <div className="reward" >
+                <img src={Image} className="rewardImgTag" alt="REWARD Logo"></img>
+            </div>
+            {/* <h1 className="GOAL"> REWARDS </h1> */}
+            
 
             <form onSubmit={goalSubmit} className="goal-form">
                 <input
