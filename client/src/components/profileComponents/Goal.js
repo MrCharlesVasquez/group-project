@@ -11,7 +11,7 @@ const Goal = props => {
                 <p className="goalName" >{goalName}</p>
                 <h2 className="goalPrice" >${goalPrice.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</h2>
                 <h1 className="goalDescription" >{goalDescription}</h1>
-                <p className="goalDate" >{goalDate}</p>
+                {/* <p className="goalDate" >{goalDate}</p> */}
                 <button  className="goalDelButton" onClick={() => deleteGoal(_id)}>Delete</button>
             </div>
         </div>
