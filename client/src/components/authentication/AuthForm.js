@@ -14,7 +14,7 @@ const AuthForm = props => {
             />
             <input 
                 className="password-input"
-                type="text"
+                type="password"
                 name="password"
                 value={password}
                 onChange={handleChange}
