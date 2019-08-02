@@ -695,11 +695,13 @@ button:focus{
     grid-row: 2;
     align-self: end;
     margin: 10px;
+}
 .mainGoalDiv{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .App{
     display: flex;
     align-self: center;
