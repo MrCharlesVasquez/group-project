@@ -422,6 +422,15 @@ button:focus{
 
 }
 
+
+.goal-divContainer{
+    background-color:rgb(16, 147, 147);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
 .goal-form{
     display: flex;
     flex-direction: column;
@@ -470,13 +479,6 @@ button:focus{
     grid-row-end: 2;
     padding: 10px;
     margin:10px;
-}
-
-.goal-divContainer{
-    background-color:rgb(16, 147, 147);
-    display: flex;
-    justify-content: center;
-    align-content: center;
 }
 
 .goal-div{
