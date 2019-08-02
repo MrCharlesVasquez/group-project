@@ -35,7 +35,7 @@ class NavBar extends React.Component {
                         <Link id="profile" className="menu-item" onClick={() => this.closeMenu()} to="/profile"> Profile </Link>
                         <Link id="budget" className="menu-item" onClick={() => this.closeMenu()} to="/budget"> Budget </Link>
                         {/* <a onClick={ this.showSettings } className="menu-item-small" href="">settings</a> */}
-                        <button onClick={logout}>Logout</button>
+                        <button className="logout" onClick={logout}>Logout</button>
                     </div>
                 </Menu>
             </div >

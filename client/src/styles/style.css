@@ -270,7 +270,21 @@ border: 3px solid rgb(170, 127, 255);
 
 
 
-
+.logout{
+    display: flex;
+    font-family: 'Roboto',  sans-serif;
+    font-size: 15px;
+    justify-self: center;
+    color: azure;
+    text-decoration-line: none;
+    border: none;
+    display: flex;
+    background-color: rgb(33, 211, 199);
+    padding: 20px;
+    margin: 125px 0px 0px 10px;
+    border: 3px solid #16a6a9;
+    border-radius: 5px
+}
 
 button:focus{
     outline: 0;
