@@ -1,9 +1,13 @@
 import React from 'react'
+import Image from '../../images/VR.png'
 
 const AuthForm = props => {
     const { handleSubmit, handleChange, username, password, btnText, toggleText, toggle, errMsg } = props
     return(
         <form className="login-form" onSubmit={handleSubmit}>
+        <div className="logo" >
+                <img src={Image} className="logoTag" alt="VR Logo"></img>
+            </div>
             <input 
                 className="username-input"
                 type="text"
