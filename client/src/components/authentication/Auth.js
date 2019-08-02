@@ -45,31 +45,35 @@ class Auth extends Component {
         return(
             <div>
                 <Navbar token={this.props.token} logout={this.props.logout}/>
-                { !this.state.toggle ?
-                    <>
-                    <AuthForm 
-                        handleChange={this.handleChange}
-                        handleSubmit={this.handleSignupSubmit}
-                        username={this.state.username}
-                        password={this.state.password}
-                        btnText="Signup"
-                    />
-                    <button onClick={this.toggler}>Already have an account?</button>
-                    <p style={{ color: "red" }}>{this.props.authErrMsg}</p>
-                    </>
-                  :
-                    <>
-                    <AuthForm 
-                        handleChange={this.handleChange}
-                        handleSubmit={this.handleLoginSubmit}
-                        username={this.state.username}
-                        password={this.state.password}
-                        btnText="Login"
-                    />
-                    <button onClick={this.toggler}>Don't have an account yet?</button>
-                    <p style={{ color: "red" }}>{this.props.authErrMsg}</p>
-                    </>
-                }
+                <div className="login-div">
+                    { !this.state.toggle ?
+                        <>
+                        <AuthForm 
+                            handleChange={this.handleChange}
+                            handleSubmit={this.handleSignupSubmit}
+                            username={this.state.username}
+                            password={this.state.password}
+                            btnText="Signup"
+                            toggleText="Already have an account?"
+                            toggle={this.toggler}
+                            errMsg={this.props.authErrMsg}
+                        />
+                        </>
+                    :
+                        <>
+                        <AuthForm 
+                            handleChange={this.handleChange}
+                            handleSubmit={this.handleLoginSubmit}
+                            username={this.state.username}
+                            password={this.state.password}
+                            btnText="Login"
+                            toggleText="Don't have an account yet?"
+                            toggle={this.toggler}
+                            errMsg={this.props.authErrMsg}
+                        />
+                        </>
+                    }
+                </div>
             </div>
         )
     }

@@ -1,10 +1,11 @@
 import React from 'react'
 
 const AuthForm = props => {
-    const { handleSubmit, handleChange, username, password, btnText } = props
+    const { handleSubmit, handleChange, username, password, btnText, toggleText, toggle, errMsg } = props
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
             <input 
+                className="username-input"
                 type="text"
                 name="username"
                 value={username}
@@ -12,13 +13,16 @@ const AuthForm = props => {
                 placeholder="Username"
             />
             <input 
-                type="text"
+                className="password-input"
+                type="password"
                 name="password"
                 value={password}
                 onChange={handleChange}
                 placeholder="Password"
             />
-            <button>{btnText}</button>
+            <button className="login-button">{btnText}</button>
+            <p className="login-toggle" onClick={toggle}>{toggleText}</p>
+            <p className="err-display" style={{ color: "red" }}>{errMsg}</p>
         </form>
     )
 }
