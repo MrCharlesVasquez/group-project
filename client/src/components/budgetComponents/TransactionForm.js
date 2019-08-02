@@ -1,12 +1,15 @@
 import React from 'react'
-
+import Image from '../../images/VICE.png'
 const TransactionForm = props => {
     const { transName, transAmount, transDate, transSubmit, transChange, } = props
 
     return (
 
         <div className="trans-formContainer">
-        <h1 className="vice">VICE</h1>
+            <div className="vice" >
+                <img src={Image} className="imgTag" alt="VICE Logo"></img>
+            </div>
+        {/* <h1 className="vice">VICE</h1> */}
             <form onSubmit={transSubmit} className="trans-form">
                 <input
                     type="text"
@@ -41,7 +44,7 @@ const TransactionForm = props => {
                         onChange={transChange} />
                     <span className="checkmark"></span>
                 </label>
-                <input
+                <input className="transDate"
                     type="date"
                     name="transDate"
                     value={transDate}

@@ -176,7 +176,7 @@ class ViceProvider extends Component {
             this.setState({
                 deadline:time
             })
-            console.log(this.state.deadline)
+            
         }
     }
     

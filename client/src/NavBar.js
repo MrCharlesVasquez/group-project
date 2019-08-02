@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { stack as Menu } from 'react-burger-menu'
-
+// import Image from '../images/Arrow.png'
 
 class NavBar extends React.Component {
     constructor() {
@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         this.setState({ menuOpen: false })
     }
 
-   
+
 
 
     render() {
@@ -27,13 +27,16 @@ class NavBar extends React.Component {
 
         return (
             <div>
-                <Menu  disableAutoFocus isOpen={this.state.menuOpen}
+                <Menu disableAutoFocus isOpen={this.state.menuOpen}
                     onStateChange={(state) => this.handleStateChange(state)} >
                     <div>
                         <h2 className="sideBarTitle"> VICE & REWARDS </h2>
+                        {/* <div className="arrow" >
+                            <img src={Image} className="arrowImgTag" alt="Arrow Graphic"></img>
+                        </div> */}
                         <Link id="home" className="menu-item" onClick={() => this.closeMenu()} to="/"> Home </Link>
-                        <Link id="profile" className="menu-item" onClick={() => this.closeMenu()} to="/profile"> Profile </Link>
-                        <Link id="budget" className="menu-item" onClick={() => this.closeMenu()} to="/budget"> Budget </Link>
+                        <Link id="profile" className="menu-item" onClick={() => this.closeMenu()} to="/profile"> GOALS </Link>
+                        <Link id="budget" className="menu-item" onClick={() => this.closeMenu()} to="/budget"> VICES </Link>
                         {/* <a onClick={ this.showSettings } className="menu-item-small" href="">settings</a> */}
                         <button className="logout" onClick={logout}>Logout</button>
                     </div>

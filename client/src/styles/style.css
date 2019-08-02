@@ -104,18 +104,26 @@
 
 
 .trans-formContainer{
+    
     display: grid;
     grid-template-columns: repeat(8, 50px);
     grid-template-rows: repeat(8, 20vw);
     justify-content: center;
     font-family:'Roboto', sans-serif;
-    background-image: linear-gradient(rgb(52, 52, 70), rgb(35, 25, 82));
+    background-image: linear-gradient(rgb(33, 21, 109), rgb(35, 25, 82));
     color:azure;
     padding: 10px
  
 }
 .vice{
-    grid-column-start: 4;
+    height: 50px;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    padding: 0px 0px 0px 20px;
+    margin:0px;
+    /* grid-column-start: 4;
     grid-column-end: 6;
     grid-row-start: 2;
     grid-row-end: 3;
@@ -125,14 +133,19 @@
     font-family: 'Racing Sans One', cursive;
     color: #0eecf0;
     font-size: 60px;
-    text-shadow: #0795989f 5px 5px 2px
+    text-shadow: #0795989f 5px 5px 2px */
+}
+
+.imgTag{
+    height: 80px;
+    object-fit: fill;
 }
 
 .trans-form{
 
-    
-    margin: auto;
-    padding: 10px;
+   
+    /* margin: auto; */
+    padding: 30px 0px 0px 0px;
     
     grid-column-start: 3;
     grid-column-end: 6;
@@ -146,11 +159,16 @@
 }
 
 .trans-form>input{
+    display: flex;
 padding: 15px;
 margin:10px;
 border-radius: 30px;
 border: 3px solid rgb(170, 127, 255);
 
+}
+.transDate{
+    padding: 10px;
+    width:180px;
 }
 
 .transSubmitButton{
@@ -160,8 +178,9 @@ border: 3px solid rgb(170, 127, 255);
     border-radius: 30px;
     border: 5px solid rgb(170, 127, 255);
     font-size: 20px;
-    padding: 15px;
-    margin: 10px;
+    bottom:50px;
+    padding: 10px;
+    /* margin: 10px; */
     width: 200px;
     box-shadow: 0px 10px 10px 10px rgba(3, 12, 12, 0.803);
     transition-property: all;
@@ -201,64 +220,70 @@ border: 3px solid rgb(170, 127, 255);
     font-family: 'Racing Sans One', cursive;
     height: 225px;
     width: 350px;
-    margin: 20px;
+    margin: 10px;
     display: grid;
-    grid-template-columns: repeat(8, 50px);
+    grid-template-columns: repeat(7, 55px);
     grid-auto-rows: repeat(6, 25px);
     grid-column-gap: 5px;
 }
 
 .transType{
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-    padding: 20px;
+    padding: 30px 30px 0px;
 }
 
 .transName{
-    align-content: center;
-    grid-column-start: 3;
-    grid-column-end: 5;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 6;
     grid-row-start: 2;
     grid-row-end: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center
+    
     
 }
 
 
 .transAmount{
-    grid-column-start: 5;
-    grid-column-end: 8;
+    grid-column-start: 4;
+    grid-column-end: 7;
     grid-row-start: 1;
     grid-row-end: 2;
-    padding: 10px 5px 0px 0px;
-    position: auto;
-    object-fit: cover;
-    align-items:right;
-    
+    text-align: center;
+    padding: 10px 40px 10px 0px;
+    display: flex;
+    justify-self: center;
+    align-self: center;   
 }
 
 .delTransBut{
     background-color:  rgb(170, 127, 255);
     color:azure;
-    padding: 5px;
+    padding: 10px 25px 10px 25px;
     border-radius: 20px;
-    margin: 10px;
-    border: 2px  solid  #6716a9;
+    border: 2px  solid  #0ed0cd;
+    font-size: 15px;
     font-family:'Roboto', sans-serif;
-    box-shadow: 0px 3px 3px 3px rgba(43, 22, 175, 0.515);
+    box-shadow: 0px 3px 3px 3px rgba(3, 208, 205, 0.31);
+    justify-content: center;
+    object-fit: cover;
+   
+    
+}
+.transDelBtnContainer{
+    padding: 10px 10px;
     grid-column-start: 3;
     grid-column-end: 5;
     grid-row-start: 4;
     grid-row-end: 5;
-    display: flex;
     justify-content: center;
-    object-fit: contain;
+    object-fit: cover;
 }
-
 .delTransBut:hover{
     background-color: #16a6a9;
 }
@@ -355,6 +380,7 @@ button:focus{
 
 .BudgetTotal{
     background-color: #09b0b3;
+    border: 3px outset aquamarine;
     margin: 20px 20px 0px 20px;
     padding: 20px 20px 40px 30px;
     border-radius: 20px 20px 100px 20px;
@@ -390,7 +416,7 @@ button:focus{
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     font-family:'Roboto', sans-serif;
-    background-image: linear-gradient(rgb(8, 199, 180), rgb(249, 249, 250)); 
+    background-image: linear-gradient(rgba(23, 15, 65, 0.981), rgb(16, 147, 147)); 
     color:azure;
     padding: 10px
 
@@ -425,7 +451,7 @@ button:focus{
         border: 5px solid aquamarine;
         font-size: 20px;
         padding: 10px;
-        box-shadow: 0px 10px 15px 5px rgba(16, 63, 59, 0.728);
+        box-shadow: 0px 10px 15px 5px rgba(7, 182, 167, 0.781);
         transition-property: all;
         transition-duration: 500ms;
         transition-timing-function: ease-in-out;
@@ -446,30 +472,8 @@ button:focus{
     margin:10px;
 }
 
-
-/*         Home / Thermo page    */
-
-
-
-.home-container{
-   /* display: grid;
-    grid-template-columns: repeat (6, 1fr);
-    grid-auto-rows: repeat (6, 1fr); */
-    transform: rotate(180deg)
-
-}
-
-.outerThermo{
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    padding: 10px;
-    
-}
-
 .goal-divContainer{
-    background-color:rgb(249, 249, 250);
+    background-color:rgb(16, 147, 147);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -483,53 +487,70 @@ button:focus{
     font-family: 'Racing Sans One', cursive;
     height: 225px;
     width: 350px;
-    margin: 20px;
+    margin: 10px;
     display: grid;
-    grid-template-columns: repeat(8, 50px);
+    grid-template-columns: repeat(7, 55px);
     grid-auto-rows: repeat(6, 25px);
     grid-column-gap: 5px;
 
 }
 
 .goalDescription{
-    align-content: center;
-    grid-column-start: 3;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-
-.goalPrice{
-    grid-column-start: 5;
-    grid-column-end: 8;
+   
+    grid-column-start: 1;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
-    padding: 10px 5px 0px 0px;
-    position: auto;
-    object-fit: cover;
-    align-items:right;
+    padding: 30px 30px 0px;
+}
+.goalName{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+   
+    
+   
+}
+.goalPrice{
+    grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 10px 40px 10px 0px;
+    display: flex;
+    justify-self: center;
+    align-self: center;   
 }
 
 .goalDelButton{
     background-color:  #09b0b3;
     color:azure;
-    padding: 5px;
+    padding: 10px 25px 10px 25px;
     border-radius: 20px;
-    margin: 10px;
     border: 2px  solid  aquamarine;
     font-family:'Roboto', sans-serif;
+    font-size: 15px;
     box-shadow: 0px 4px 3px 3px rgba(22, 114, 175, 0.515);
+    justify-content: center;
+    object-fit: cover;
+   
+}
+.delBtnContainer{
+    padding: 10px 10px;
     grid-column-start: 3;
     grid-column-end: 5;
     grid-row-start: 4;
     grid-row-end: 5;
-    display: flex;
     justify-content: center;
-    object-fit: contain;
+    object-fit: cover;
 }
+
+
 .goalDate{
     grid-column-start: 1;
     grid-column-end: 4;
@@ -539,11 +560,69 @@ button:focus{
   
 }
 
-.goalName{
+
+
+/*?           HOME PAGE             */
+
+
+.goal-tag {
+    
+    transform: rotate(180deg) ;
+    font-family: "Roboto" , sans-serif;
+    font-size: 20px;
+}
+
+.home-container{
+     transform: rotate(180deg);
+    background-color:  #120724;
+     
+ }
+.reward{
+    height: 50px;
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
+    padding: 100px 0px 0px 20px;
+    margin:0px;
+}
+ .rewardImgTag{
+    height: 80px;
+    object-fit: fill;
+}
+
+
+
+/*?           HOME page        */
+.outer-Container{
+    background-color:  #120724;
+    color:azure;
+    
+    padding:20px;
+
+}
+.outerThermo{
+    background-image: linear-gradient(#1a085e, rgba(108, 30, 108, 0.954));
+    border-radius: 100px;
+}
+.allThermo{
+    /* grid-column-start: 5;
+    grid-column-end: 8;
+    grid-row-start: 2;
+    grid-row-end: 8; */
+ 
+}
+.innerThermo{
+    background-image: linear-gradient( #972cee,violet);
+    border-radius: 100px 100px 10px 10px;
+
+}
+.mainGoal{
+    display: inline-flex;
+    align-items: center;
+    justify-self: center;
+    font-family: 'Racing Sans One', cursive;
+    font-size:40px;
     padding: 20px;
 }
 
@@ -616,4 +695,57 @@ button:focus{
     grid-row: 2;
     align-self: end;
     margin: 10px;
+.mainGoalDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.App{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    padding: 20px;
+}
+.App-title{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    padding: 20px;
+}
+
+.App-date{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    padding: 20px;
+}
+.Total-SavingsHome{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.Savings-Goal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.saveDiv{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.allOfIt{
+   
+}
+
+
+
+.outerContainer{
+    display:block;
+    align-self: center;
+    justify-self: center;
+    padding: 20px;
 }
