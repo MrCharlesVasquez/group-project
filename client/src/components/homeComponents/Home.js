@@ -20,9 +20,16 @@ const Home = (props) => {
     
     const thermoRef = useRef(total)
 
-    
-    const goalLabels = goalArray.map((goal, i) => <p className="goal-tag" key={(goal._id ? goal._id : i)} style={{ position: "absolute", right: "0", top: `${goal.goalPrice / goalTotal * 100}%`, margin: "0" }}>{goal.goalName} - ${goal.goalPrice}</p>)
-    
+    // const currentGoal = goalArray.indexof(goal)
+    const goalLabels = goalArray.map((goal, i, entireArray) => {
+        const currentGoal = entireArray.indexOf(goal)
+        let sum = 0
+        for (let i = currentGoal + 1; i < entireArray.length; i++){
+            sum += (entireArray[i].goalPrice)
+        }
+        return <p className="goal-tag" key={(goal._id ? goal._id : i)} style={{ position: "absolute", right: "0", top: `${(goal.goalPrice + sum) / goalTotal * 100}%`, margin: "0" }}>{goal.goalName} - ${goal.goalPrice}</p> 
+    })
+            
     return (
         <div>
 
