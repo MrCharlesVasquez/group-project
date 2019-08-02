@@ -718,6 +718,7 @@ button:focus{
     align-items: center;
     justify-content: center;
 }
+
 .App{
     display: flex;
     align-self: center;
