@@ -35,8 +35,8 @@ class NavBar extends React.Component {
                             <img src={Image} className="arrowImgTag" alt="Arrow Graphic"></img>
                         </div> */}
                         <Link id="home" className="menu-item" onClick={() => this.closeMenu()} to="/"> Home </Link>
-                        <Link id="profile" className="menu-item" onClick={() => this.closeMenu()} to="/profile"> Profile </Link>
-                        <Link id="budget" className="menu-item" onClick={() => this.closeMenu()} to="/budget"> Budget </Link>
+                        <Link id="profile" className="menu-item" onClick={() => this.closeMenu()} to="/profile"> GOALS </Link>
+                        <Link id="budget" className="menu-item" onClick={() => this.closeMenu()} to="/budget"> VICES </Link>
                         {/* <a onClick={ this.showSettings } className="menu-item-small" href="">settings</a> */}
                         <button className="logout" onClick={logout}>Logout</button>
                     </div>
