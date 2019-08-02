@@ -21,7 +21,7 @@ const AuthForm = props => {
                 placeholder="Password"
             />
             <button className="login-button">{btnText}</button>
-            <button className="login-toggle" onClick={toggle}>{toggleText}</button>
+            <p className="login-toggle" onClick={toggle}>{toggleText}</p>
             <p className="err-display" style={{ color: "red" }}>{errMsg}</p>
         </form>
     )
