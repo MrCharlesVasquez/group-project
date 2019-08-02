@@ -5,37 +5,38 @@ import Clock from './Clock.js'
 
 
 const Home = (props) => {
-console.log(props)
     const { deadline, setTimer, goalTotal, total, getGoals, getTransactions, goalArray, mainGoal, thermoHeight } = props
-
+    
     useEffect(() => {
         getTransactions()
         getGoals()
     }, [getTransactions, getGoals])
-
+    
     useEffect(() => {
         // thermoRef.current.style.height = `${thermoHeight}`
-
+        
         thermoRef.current.style.height = `${thermoHeight}%`
         setTimer()
     }, [thermoHeight, setTimer])
-
+    
     const thermoRef = useRef(total)
 
-
+    
     const goalLabels = goalArray.map((goal, i) => <p key={(goal._id ? goal._id : i)} style={{ position: "absolute", right: "0", top: `${goal.goalPrice / goalTotal * 100}%`, margin: "0" }}>{goal.goalName} - ${goal.goalPrice}</p>)
+    
     return (
         <div>
             <div>
                {!mainGoal ? <h1>"Set up your savings goals in profile!"</h1> : <h1>Goal : {mainGoal.goalName}</h1> }
             </div>
-            <div className="App">
+            {deadline ? <div className="App">
                 <div className="App-title">Countdown Timer</div>
                 <div className="App-date">{deadline}</div>
                 <Clock deadline={deadline} />
-            </div>
+            </div> : <div></div>    }
             <div>
-                <h2>Savings Goal: {goalTotal}</h2>
+                <h2>Savings Goal: ${goalTotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2
+})}</h2>
             </div>
             <div className="outerContainer">
                 <div className="home-container">
@@ -51,7 +52,7 @@ console.log(props)
                     </div>
 
                 </div>
-                <h1>Total Savings: {total}</h1>
+                <h1>Total Savings: ${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</h1>
             </div>
 
         </div>
