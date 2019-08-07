@@ -7,9 +7,9 @@ const TransactionForm = props => {
 
         <div className="trans-formContainer">
             <div className="vice" >
-                <img src={Image} className="imgTag" alt="VICE Logo"></img>
+                <img src={Image} className="viceImgTag" alt="VICE Logo"></img>
             </div>
-        {/* <h1 className="vice">VICE</h1> */}
+        
             <form onSubmit={transSubmit} className="trans-form">
                 <input
                     type="text"
@@ -26,7 +26,7 @@ const TransactionForm = props => {
                     required
                     placeholder="amount" />
 
-                <label className="container">
+                <label className="radio-container">
                     Expense<input className="radio"
                         type="radio"
                         name="transType"
@@ -36,7 +36,7 @@ const TransactionForm = props => {
                     <span className="checkmark"></span>
                 </label>
 
-                <label className="container">
+                <label className="radio-container">
                     Income<input className="radio"
                         type="radio"
                         name="transType"
